@@ -13,14 +13,14 @@ export default function Home() {
     }, [])
 
     const loadUsers = async () => {
-        const response = await axios.get("http://localhost:8080/users", {
+        const response = await axios.get("/users", {
             headers: {"Access-Control-Allow-Origin": "*"}
         })
         setUsers(response.data);
     }
 
     const deleteUser = async (id) => {
-        await axios.delete(`http://localhost:8080/user/${id}`, {
+        await axios.delete(`/user/${id}`, {
             headers: {"Access-Control-Allow-Origin": "*"}
         })
         loadUsers();
