@@ -13,7 +13,9 @@ export default function Home() {
     }, [])
 
     const loadUsers = async () => {
-        const response = await axios.get("http://localhost:8080/users")
+        const response = await axios.get("http://localhost:8080/users", {
+            headers: {"Access-Control-Allow-Origin": "*"}
+        })
         setUsers(response.data);
     }
 
