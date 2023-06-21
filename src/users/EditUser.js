@@ -25,13 +25,17 @@ export default function EditUser() {
     }, [])
     const onSubmit = async (e) => {
         e.preventDefault()
-        await axios.put(`http://localhost:8080/user/${id}`, user)
+        await axios.put(`http://localhost:8080/user/${id}`, {
+            headers: {"Access-Control-Allow-Origin": "*"}
+        }, user)
         navigate('/')
     }
 
 
     const loadUser = async () => {
-        const response = await axios.get(`http://localhost:8080/user/${id}`)
+        const response = await axios.get(`http://localhost:8080/user/${id}`, {
+            headers: {"Access-Control-Allow-Origin": "*"}
+        })
         setUser(response.data)
     }
     return (

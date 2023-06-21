@@ -18,7 +18,9 @@ export default function ViewUser() {
     }, [])
 
     const loadUser = async () => {
-        const response = await axios.get(`http://localhost:8080/user/${id}`)
+        const response = await axios.get(`http://localhost:8080/user/${id}`, {
+            headers: {"Access-Control-Allow-Origin": "*"}
+        })
         setUser(response.data);
     }
 
